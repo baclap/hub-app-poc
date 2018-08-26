@@ -1,10 +1,13 @@
-function init() {
-    const d = document.createElement('div');
-    d.textContent = 'hello';
-    document.body.appendChild(d);
+import React from 'react';
+import ReactDOM from 'react-dom';
 
-    import('http://localhost:8001/module.js').then(module => {
-        console.log('module from 8001', module);
-    })
-}
-init()
+window.React = React;
+
+const d = document.createElement('div');
+document.body.appendChild(d);
+
+import(/* webpackIgnore: true */ 'http://localhost:8001/dist/module.js').then(module => {
+    console.log('module from 8001', module);
+    const Counter = module.default;
+    ReactDOM.render(<Counter />, d);
+});

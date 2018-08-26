@@ -9,6 +9,10 @@ export default class Counter extends React.Component {
     }
     render() {
         const { n } = this.state;
-        return <button onClick={e => this.setState({ n: n + 1 })}>{n}</button>
+        return React.createElement(
+            "button",
+            { onClick: e => this.setState({ n: n + 1 }) },
+            n
+        );
     }
 }
