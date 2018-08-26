@@ -1,5 +1,5 @@
 {
-  "name": "independent-client-test",
+  "name": "hub-app-poc",
   "scripts": {
     "start": "sh ./start.sh"
   },
