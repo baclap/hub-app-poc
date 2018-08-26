@@ -1,11 +1,16 @@
 'use strict';
 
 const express = require('express');
-const serve = require('express-static');
 
 // Hub app gets its won static server on port 8000
 const hubApp = express();
-hubApp.use(serve(__dirname + '/hub-app'));
+hubApp.use(express.static(__dirname + '/hub-app'));
+// matched UI routes serve the SPA
+hubApp.get([
+    '/dashboard',
+    '/internal-page(/*)?',
+    '/external-page(/*)?'
+], (req, res) => res.sendFile(__dirname + '/hub-app/index.html'));
 hubApp.listen(8000);
 console.log('Hub app is being served from port 8000...');
 
@@ -17,6 +22,6 @@ externalPage.use((req, res, next) => {
     res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
     next();
 }); 
-externalPage.use(serve(__dirname + '/external-page')); 
+externalPage.use(express.static(__dirname + '/external-page')); 
 const externalPageServer = externalPage.listen(8001);
 console.log('External page is being served from port 8001...');
