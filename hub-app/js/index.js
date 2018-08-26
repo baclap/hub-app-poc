@@ -1,12 +1,18 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Router, Switch, Route, Redirect, Link } from 'react-router-dom';
+import * as ReactRouterDOM from 'react-router-dom';
 import Loadable from 'react-loadable';
 import history from './history';
 import loadExternalComponent from './loadExternalComponent';
 import DashboardPage from './pages/DashboardPage';
 import InternalPage from './pages/InternalPage';
 import Loading from './components/Loading';
+
+// HACK: expose React and ReactRouterDOM on window so external-page
+// doesn't need to bundle these libraries also...
+window.React = React;
+window.ReactRouterDOM = ReactRouterDOM;
+const { Router, Switch, Route, Redirect, Link } = ReactRouterDOM;
 
 // For demonstration purposes only...
 function delayedLoadExternalPage() {

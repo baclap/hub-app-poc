@@ -21,5 +21,12 @@ module.exports = {
                 }
             }
         }]
+    },
+    // Exclude react and react-router-dom from the bundled code and instead expect
+    // them to be defined on window at the values given in the below configuration.
+    // This reduces the bundle from ~260kb to ~11kb.
+    externals : {
+        react: 'React',
+        'react-router-dom': 'ReactRouterDOM'
     }
 };
