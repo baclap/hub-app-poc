@@ -31,7 +31,7 @@ const LoadableExternalPage = Loadable({
 
 ReactDOM.render(
     <Router history={history}>
-        <div>
+        <div style={{ background: 'purple' }}>
             <ul>
                 <li><Link to="/dashboard">Dashboard</Link></li>
                 <li><Link to="/internal-page">Internal Page</Link></li>
