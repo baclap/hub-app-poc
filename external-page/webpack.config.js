@@ -6,7 +6,9 @@ module.exports = {
     entry: path.resolve(__dirname, 'index.js'),
     output: {
         path: path.resolve(__dirname, 'dist'),
-        filename: 'index.js'
+        filename: 'page.js',
+        library: 'external-page',
+        libraryTarget: 'umd'
     },
     module: {
         rules: [{
@@ -15,8 +17,7 @@ module.exports = {
             use: {
                 loader: 'babel-loader',
                 options: {
-                    presets: ['@babel/preset-env', '@babel/preset-react'],
-                    plugins: ['syntax-dynamic-import']
+                    presets: ['@babel/preset-env', '@babel/preset-react']
                 }
             }
         }]

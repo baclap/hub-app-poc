@@ -1,4 +1,3 @@
 node_modules
-main/dist
-secondary/dist/*
-!secondary/dist/.gitkeep
+hub-app/dist
+external-page/dist
