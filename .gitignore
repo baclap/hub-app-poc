@@ -1,1 +1,4 @@
 node_modules
+main/dist
+secondary/dist/*
+!secondary/dist/.gitkeep
