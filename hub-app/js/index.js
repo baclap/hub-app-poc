@@ -12,14 +12,14 @@ import Loading from './components/Loading';
 // doesn't need to bundle these libraries also...
 window.React = React;
 window.ReactRouterDOM = ReactRouterDOM;
-const { Router, Switch, Route, Redirect, Link } = ReactRouterDOM;
+const { Router, Switch, Route, Redirect, NavLink } = ReactRouterDOM;
 
 // For demonstration purposes only...
 function delayedLoadExternalPage() {
     return new Promise((resolve, reject) => {
         setTimeout(
             () => loadExternalComponent(
-                'http://localhost:8001/dist/page.js',
+                'http://localhost:8001/page.js',
                 'external-page'
             ).then(resolve),
             1000
@@ -37,15 +37,16 @@ const LoadableExternalPage = Loadable({
 
 ReactDOM.render(
     <Router history={history}>
-        <div style={{ background: 'purple' }}>
-            <ul>
-                <li><Link to="/dashboard">Dashboard</Link></li>
-                <li><Link to="/internal-page">Internal Page</Link></li>
-                <li><Link to="/external-page">External Page</Link></li>
-            </ul>
-
-            <hr/>
-
+        <div>
+            <nav className="navbar is-link">
+                <div className="navbar-menu">
+                    <div className="navbar-start">
+                        <NavLink className="navbar-item" activeClassName="is-active" to="/dashboard">Dashboard</NavLink>
+                        <NavLink className="navbar-item" activeClassName="is-active" to="/internal-page">Internal Page</NavLink>
+                        <NavLink className="navbar-item" activeClassName="is-active" to="/external-page">External Page</NavLink>
+                    </div>
+                </div>
+            </nav>
             <Switch>
                 <Route path="/dashboard" component={DashboardPage}/>
                 <Route path="/internal-page" component={InternalPage}/>

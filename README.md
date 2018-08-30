@@ -26,6 +26,8 @@ I'd like to find a cleaner solution here. Possibly [share-loader](https://github
 
 To run the POC locally:
 - `npm i`
-- `npm start`
-    - bundles the two separate code bases with webpack and starts the two static servers
+- `npm serve:hub`
+    - bundles hub-app code with webpack and starts the static server for the hub-app SPA
+- `npm serve:external`
+    - bundles external-page code with webpack and starts the static server for external-page assets
 - navigate to [http://localhost:8000](http://localhost:8000)

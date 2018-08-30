@@ -1,7 +1,8 @@
 {
   "name": "hub-app-poc",
   "scripts": {
-    "start": "sh ./start.sh"
+    "serve:hub": "sh ./hub-app/start.sh",
+    "serve:external": "sh ./external-page/start.sh"
   },
   "dependencies": {
     "express": "4.16.3"
